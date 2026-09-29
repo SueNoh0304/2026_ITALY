@@ -1,0 +1,17 @@
+{
+  "name": "OH & NOH · Luna di Miele 2027",
+  "short_name": "OH & NOH",
+  "description": "2027년 1월 이탈리아 신혼여행 일정 · 예약 · 이동 · 맛집",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#EEF2F1",
+  "theme_color": "#16655F",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -1,6 +1,6 @@
 // 오프라인에서도 앱이 열리도록 파일을 저장해 두는 서비스 워커
 // 앱 내용을 수정했다면 아래 버전 숫자를 올려 주세요 (예: v2 → v3)
-const CACHE = 'oh-noh-v2';
+const CACHE = 'oh-noh-v3';
 const FILES = [
   './',
   './index.html',
@@ -13,7 +13,7 @@ const FILES = [
 ];
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES.map((f) => new Request(f, { cache: 'reload' })))).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (e) => {
@@ -30,7 +30,7 @@ self.addEventListener('fetch', (e) => {
   // 앱 화면: 인터넷이 되면 최신 버전, 안 되면 저장된 버전
   if (e.request.mode === 'navigate') {
     e.respondWith(
-      fetch(e.request)
+      fetch(e.request, { cache: 'no-store' })
         .then((res) => { const copy = res.clone(); caches.open(CACHE).then((c) => c.put('./index.html', copy)); return res; })
         .catch(() => caches.match('./index.html'))
     );

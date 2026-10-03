@@ -1,6 +1,6 @@
 // 오프라인에서도 앱이 열리도록 파일을 저장해 두는 서비스 워커
 // 앱 내용을 수정했다면 아래 버전 숫자를 올려 주세요 (예: v2 → v3)
-const CACHE = 'oh-noh-v5';
+const CACHE = 'oh-noh-v6';
 const FILES = [
   './',
   './index.html',

@@ -89,6 +89,8 @@ h1{font-family:var(--serif);font-weight:700;font-size:28px;line-height:1.2;margi
 .tl .d{font-size:13px;color:var(--ink-2)}
 .tl li.key .n{color:var(--accent)}
 .tl .bk{font-size:11px;font-weight:600;color:var(--ochre);border:1px solid currentColor;border-radius:5px;padding:0 5px}
+.tl .opt{font-size:11px;font-weight:600;color:var(--ink-2);border:1px dashed currentColor;border-radius:5px;padding:0 5px}
+.tl li.optional .n{color:var(--ink-2)}
 
 .note{margin-top:16px;background:var(--surface-2);border-radius:12px;padding:12px 14px;font-size:13px;color:var(--ink-2);display:flex;flex-direction:column;gap:4px}
 .note b{color:var(--ink);font-weight:600}
@@ -166,7 +168,7 @@ h1{font-family:var(--serif);font-weight:700;font-size:28px;line-height:1.2;margi
 </head>
 <body>
 <div id="app"></div>
-<script id="state" type="application/json">{"checked":{"t-mv":true,"t-vf":true,"t-fr":true,"h-como":true,"h-mil":true,"h-ven":true,"h-fir":true,"h-rom":true,"l-mil-in":true,"l-ven-in":true,"l-fir-policy":true}}</script>
+<script id="state" type="application/json">{"checked":{"t-mv":true,"t-vf":true,"t-fr":true,"h-como":true,"h-mil":true,"h-ven":true,"h-fir":true,"h-rom":true,"l-mil-in":true,"l-ven-in":true,"l-fir-policy":true,"b-accfi":true}}</script>
 <script id="app-code">
 (function(){
 var TRIP_START = new Date(2027,0,18);
@@ -237,18 +239,21 @@ var DAYS = [
    {t:'15:15',k:'미술관',n:'스쿠올라 그란데 디 산 로코',d:'틴토레토의 천장화'},
    {t:'17:15',k:'이동',n:'호텔에서 짐 찾아 역으로',d:'열차 출발 30분 전 도착'},
    {t:'20:30',k:'이동',n:'숙소 체크인: Via Taddea 23',d:'SMN역에서 도보 약 10분 · 중앙시장 바로 뒤'},
-   {t:'21:00',k:'식사',n:'피렌체 중앙시장 2층 푸드홀',d:'숙소에서 1~2분 · 늦게까지 영업'}
+   {t:'21:00',k:'식사',n:'피렌체 중앙시장 2층 푸드홀',d:'숙소에서 1~2분 · 늦게까지 영업'},
+   {t:'',k:'식사',n:'Trattoria Enzo & Piero (Via Faenza 105r)',d:'숙소에서 도보 3분 · 저녁 19~22시(일요일 휴무) · 21시 도착이면 미리 전화 예약 +39 055 214901',opt:true}
   ]},
  {id:'d23',md:'1/23',dd:'23',w:'토',city:'피렌체',title:'다비드와 우피치',sub:'미술관 3 · 명소 3',
   items:[
-   {t:'08:15',k:'미술관',n:'아카데미아 (다비드)',d:'숙소에서 도보 약 7분 · 첫 타임 입장',key:true,bk:true},
+   {t:'08:15',k:'미술관',n:'아카데미아 (다비드)',d:'예약 완료 · 숙소에서 도보 약 7분 · 여권 지참 · 큰 가방 반입 불가',key:true},
    {t:'09:45',k:'유적',n:'두오모 대성당 + 산 조반니 세례당',d:'브루넬레스키 패스 포함'},
    {t:'10:45',k:'미술관',n:'두오모 오페라 박물관',d:'기베르티 〈천국의 문〉 원본'},
+   {t:'11:45',k:'유적',n:'팔라초 포르티나리 살비아티 (Via del Corso 6)',d:'두오모에서 도보 3분 · 단테의 연인 베아트리체 집안의 궁전 · 프레스코 홀과 안뜰 · 방문 시간·입장 방법 미리 확인',opt:true},
    {t:'12:30',k:'식사',n:'Trattoria Mario',d:'점심만 영업, 줄 서기 각오'},
    {t:'14:00',k:'미술관',n:'우피치',d:'보티첼리 〈비너스의 탄생〉 · 약 2시간 30분',key:true,bk:true},
    {t:'16:45',k:'유적',n:'베키오 다리 → 시뇨리아 광장',d:''},
    {t:'17:30',k:'유적',n:'미켈란젤로 광장 야경',d:'택시나 12·13번 버스'},
-   {t:'저녁',k:'식사',n:'Trattoria Sostanza',d:'비스테카, 버터 치킨 · 예약 필수',bk:true}
+   {t:'저녁',k:'식사',n:'Trattoria Sostanza',d:'비스테카, 버터 치킨 · 예약 필수',bk:true},
+   {t:'',k:'식사',n:'또는 Alla Vecchia Bettola (Viale Vasco Pratolini 3)',d:'올트라르노 · 비스테카·리볼리타 · 합석 분위기의 노포 · 화~토만 영업(19:30~) · 예약 필수 · 미켈란젤로 광장에서 택시 10분',opt:true}
   ]},
  {id:'d24',md:'1/24',dd:'24',w:'일',city:'피렌체 → 로마',title:'쿠폴라에 올라 로마로',sub:'미술관 1 · 명소 4 · 오후 기차',
   train:{op:'ITALO 8959 · 예매 완료',from:'Firenze S.M.N.',to:'Roma Termini',dep:'16:03',arr:'17:40',dur:'1h37',note:'Prima Business · 1호차 38·39석'},
@@ -315,7 +320,7 @@ var BOOK = [
   {id:'b-ducale',n:'두칼레 궁전',m:'1/21(목) 13:45',o:'1~2주 전',u:'https://palazzoducale.visitmuve.it/en/'},
   {id:'b-accve',n:'아카데미아 미술관 (베네치아)',m:'1/22(금) 09:00',o:'1~2주 전',u:'https://www.gallerieaccademia.it/en'},
   {id:'b-peggy',n:'페기 구겐하임',m:'1/22(금) 11:00',o:'1~2주 전',u:'https://www.guggenheim-venice.it/en/'},
-  {id:'b-accfi',n:'아카데미아 (다비드)',m:'1/23(토) 08:15',o:'11월 중순',u:'https://www.galleriaaccademiafirenze.it/en/'},
+  {id:'b-accfi',n:'아카데미아 (다비드)',m:'1/23(토) 08:15 · 2인 €54',o:'예약 완료 · 확인 메일의 티켓 지참',u:'https://www.galleriaaccademiafirenze.it/en/'},
   {id:'b-uffizi',n:'우피치',m:'1/23(토) 14:00',o:'11월 말~12월 초',u:'https://www.uffizi.it/en'},
   {id:'b-brunel',n:'브루넬레스키 패스 (쿠폴라)',m:'시작일 1/23 · 쿠폴라 1/24(일) 12:45',o:'12월',u:'https://duomo.firenze.it/en/'},
   {id:'b-pitti',n:'피티 궁전',m:'1/24(일) 08:30',o:'2주 전',u:'https://www.uffizi.it/en/pitti-palace'},
@@ -376,7 +381,7 @@ var EATS = [
  {c:'밀라노',dish:'코톨레타 · 샤프란 리조또 · 오소부코',p:[['Trattoria Milanese','정통 밀라노 요리'],['Ratanà','모던 리조또'],['Luini','두오모 옆 판체로티'],['Pasticceria Marchesi','디저트']]},
  {c:'코모',dish:'호수 농어 리조또 · 미솔티니',p:[['Osteria del Gallo','Via Vitani 16 · 매일 바뀌는 메뉴 · 일요일 휴무, 월요일 점심만']]},
  {c:'베네치아',dish:'치케티 + 스프리츠 · 오징어 먹물 스파게티 · 사르데 인 사오르',p:[['Trattoria Bar Pontini','굴리에 다리 옆 · 숙소 근처 브런치'],['Pasticceria Dal Mas','역 앞 빵집 · 아침 일찍'],['Frito Inn','산 레오나르도 광장 해산물 튀김'],['Cantina Do Mori','리알토 치케티 바'],["All'Arco",'리알토 치케티'],['Trattoria alla Madonna','해산물'],['Osteria alle Testiere','작고 인기 많음, 예약 권장']]},
- {c:'피렌체',dish:'비스테카 알라 피오렌티나 · 람프레도토 · 스키아차타 파니노',p:[['Trattoria Sostanza','비스테카, 버터 치킨 · 예약'],['Trattoria Mario','점심만, 일요일 휴무'],['Da Nerbone','중앙시장 람프레도토'],["All'Antico Vinaio",'포카치아(스키아차타) 샌드위치 · 1/24 점심'],['Gelateria dei Neri','젤라토']]},
+ {c:'피렌체',dish:'비스테카 알라 피오렌티나 · 람프레도토 · 스키아차타 파니노',p:[['Trattoria Sostanza','비스테카, 버터 치킨 · 예약'],['Trattoria Mario','점심만, 일요일 휴무'],['Da Nerbone','중앙시장 람프레도토'],["All'Antico Vinaio",'포카치아(스키아차타) 샌드위치 · 1/24 점심'],['Gelateria dei Neri','젤라토'],['Trattoria Enzo & Piero','숙소 근처 · 일요일 휴무 · 선택'],['Alla Vecchia Bettola','올트라르노 노포 · 일·월 휴무 · 선택']]},
  {c:'로마',dish:'카르보나라 · 카초 에 페페 · 수플리 · 1월 제철 카르초피',p:[['Roscioli Salumeria','카르보나라 · 예약'],['Armando al Pantheon','일요일 휴무 · 예약'],['Da Enzo al 29','트라스테베레'],['Pizzarium','바티칸 근처 조각 피자'],['Supplizio','수플리'],['Antico Forno Roscioli','로마식 포카치아 · 1/27 점심'],['Giolitti','판테온 옆 대표 젤라또 · 1/25'],['Pompi','스페인 계단 근처 티라미수 · 1/26']]}
 ];
 
@@ -484,7 +489,7 @@ function viewPlan(){
   }
   h += '<ol class="tl">';
   d.items.forEach(function(it){
-    h += '<li class="'+(it.key?'key':'')+'"><span class="t">'+esc(it.t)+'</span><div class="c"><div class="n">'+esc(it.n)+(it.bk?' <span class="bk">예약</span>':'')+'</div>'
+    h += '<li class="'+(it.key?'key':'')+(it.opt?' optional':'')+'"><span class="t">'+esc(it.t)+'</span><div class="c"><div class="n">'+esc(it.n)+(it.bk?' <span class="bk">예약</span>':'')+(it.opt?' <span class="opt">선택</span>':'')+'</div>'
       + '<div>'+kindTag(it.k)+(it.d?' <span class="d">'+esc(it.d)+'</span>':'')+'</div></div></li>';
   });
   h += '</ol>';

@@ -321,9 +321,9 @@ var BOOK = [
   {id:'b-accve',n:'아카데미아 미술관 (베네치아)',m:'1/22(금) 09:00',o:'1~2주 전',u:'https://www.gallerieaccademia.it/en'},
   {id:'b-peggy',n:'페기 구겐하임',m:'1/22(금) 11:00',o:'1~2주 전',u:'https://www.guggenheim-venice.it/en/'},
   {id:'b-accfi',n:'아카데미아 (다비드)',m:'1/23(토) 08:15 · 2인 €54',o:'예약 완료 · 확인 메일의 티켓 지참',u:'https://www.galleriaaccademiafirenze.it/en/'},
-  {id:'b-uffizi',n:'우피치',m:'1/23(토) 14:00',o:'11월 말~12월 초',u:'https://www.uffizi.it/en'},
-  {id:'b-brunel',n:'브루넬레스키 패스 (쿠폴라)',m:'시작일 1/23 · 쿠폴라 1/24(일) 12:45',o:'12월',u:'https://duomo.firenze.it/en/'},
-  {id:'b-pitti',n:'피티 궁전',m:'1/24(일) 08:30',o:'2주 전',u:'https://www.uffizi.it/en/pitti-palace'},
+  {id:'b-uffizi',n:'우피치 (5일 통합권 €40)',m:'1/23(토) 14:00 · 피티 궁전·보볼리 포함',o:'지금 예약 · 오후 할인권 가격도 비교',u:'https://www.uffizi.it/en'},
+  {id:'b-brunel',n:'브루넬레스키 패스 (쿠폴라)',m:'시작일 1/23 · 쿠폴라 1/24(일) 12:45',o:'10월 하순 (약 3개월 전) 오픈',u:'https://duomo.firenze.it/en/'},
+  {id:'b-pitti',n:'피티 궁전 · 보볼리 정원',m:'1/24(일) 08:45',o:'우피치 5일 통합권에 포함',u:'https://www.uffizi.it/en/pitti-palace'},
   {id:'b-vatican',n:'바티칸 박물관',m:'1/25(월) 08:00',o:'60일 전 = 11/26',u:'https://www.museivaticani.va/'},
   {id:'b-colos',n:'콜로세움 · 포로 로마노 · 팔라티노',m:'1/26(화) 09:15',o:'30일 전 = 12/27',u:'https://ticketing.colosseo.it/en/'},
   {id:'b-borghese',n:'보르게세 미술관',m:'1/26(화) 15:00',o:'판매 오픈 즉시',u:'https://galleriaborghese.beniculturali.it/en/'},
@@ -364,15 +364,16 @@ var BOOK = [
 
 var ORDER = [
  {w:'지금 바로',t:'최후의 만찬 오픈 지켜보기',why:'1월분이 열리면 바로 매진 · 공식 사이트 공지 확인',ids:['b-cen']},
+ {w:'지금',t:'우피치 + 피티 궁전 5일 통합권',why:'우피치 공식 사이트 · 시작일 1/23 · 우피치 14:00 입장 지정',ids:['b-uffizi','b-pitti']},
+ {w:'지금 (급하지 않음)',t:'밀라노·베네치아 박물관',why:'1월 비수기라 여유 있음 · 열려 있으면 미리',ids:['b-duomomi','b-brera','b-ducale','b-accve','b-peggy']},
  {w:'10월 중',t:'숙소 5곳 확정',why:'무료 취소 요금으로 먼저 잡아 두기',ids:['h-como','h-mil','h-ven','h-fir','h-rom']},
- {w:'11월 중순',t:'아카데미아 (다비드)',why:'피렌체에서 가장 빨리 차는 곳',ids:['b-accfi']},
  {w:'11/26',t:'바티칸 박물관',why:'관람일 60일 전 자정(로마 시간)에 오픈',ids:['b-vatican']},
- {w:'11월 말~12월 초',t:'우피치',why:'원하는 시간대 잡으려면 1개월 이상 전',ids:['b-uffizi']},
- {w:'12월',t:'브루넬레스키 패스 · 보르게세',why:'쿠폴라 슬롯과 보르게세는 소수 인원 시간제',ids:['b-brunel','b-borghese']},
+ {w:'10월 하순',t:'브루넬레스키 패스 (쿠폴라)',why:'약 3개월 전부터 판매 · 1/24 12:45 슬롯',ids:['b-brunel']},
+ {w:'12월',t:'보르게세 미술관',why:'판매 시점이 자주 바뀜 · 12월 초부터 1/26 날짜 확인',ids:['b-borghese']},
  {w:'12/27',t:'콜로세움',why:'관람일 30일 전 오픈',ids:['b-colos']},
  {w:'12월 중',t:'숙소에 짐 보관 · 체크인 메시지 보내기',why:'도착 시간과 짐 맡길 시간을 숙소마다 미리 알리기',ids:['l-como-late','l-mil-in','l-mil-out','l-ven-in','l-ven-out','l-fir-late','l-fir-policy','l-fir-smn','l-rom-in','l-rom-out']},
  {w:'12월 말~1월 초',t:'식당 예약',why:'여행 2~3주 전 · 전화 또는 호텔에 부탁',ids:['r-gallo','r-milanese','r-sostanza','r-roscioli','r-armando']},
- {w:'1월 첫 주',t:'나머지 박물관',why:'비수기라 1~2주 전이면 충분',ids:['b-duomomi','b-brera','b-sanmarco','b-ducale','b-accve','b-peggy','b-pitti','b-angelo']},
+ {w:'1월 첫 주',t:'산마르코 대성당 · 산탄젤로 성',why:'1~2주 전이면 충분',ids:['b-sanmarco','b-angelo']},
  {w:'1/13(수) 정오',t:'최후의 만찬 마지막 기회',why:'못 구했다면 다음 주 추가 티켓이 풀리는 날',ids:['b-cen'],opt:true},
  {w:'현지에서',t:'지역열차 · 공항 버스',why:'전날·당일 구매 · Flibco는 입국 후 앱으로',ids:[]}
 ];
